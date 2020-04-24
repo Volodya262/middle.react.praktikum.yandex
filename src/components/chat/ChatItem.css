@@ -1,0 +1,62 @@
+
+.chat-item {
+    display: flex;
+    flex-direction: row;
+    max-width: 100px;
+}
+
+.chat-item__logo {
+    height: 50px;
+}
+
+.chat-item__all-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-item__title-and-date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chat-item__author-and-message-container {
+    display: flex;
+}
+
+.chat-item__title {
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.chat-item__date {
+    /*пока пустое*/
+}
+
+.chat-item__author {
+    font-weight: bold;
+    flex-shrink: 0;
+    color: rgb(50, 115, 220);
+}
+
+.chat-item__message {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .chat-item__logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

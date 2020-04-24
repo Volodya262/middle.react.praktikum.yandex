@@ -1,28 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from "./header";
-import Description from "./Description";
+import ChatItem from "./components/chat/ChatItem";
 
 function App() {
   return (
     <div className="App">
-      <Header name={'user'}/>
-      <Description/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChatItem iconUrl={logo} title={'Some group chat'} author={'The Shrek 2'} message={'Best movie i\'ve ever seedddddddddddddddddddddn!!!'} date={new Date()}/>
     </div>
   );
 }
