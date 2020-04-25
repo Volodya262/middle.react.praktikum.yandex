@@ -11,6 +11,7 @@ const ChatItem: React.FunctionComponent<IProps> = (props: IProps) => (
     <div className="chat-item">
         <img src={props.chatPreview.logoUrl} className="chat-item__logo" alt="logo"/>
         <div className="chat-item__all-text-container">
+            {/* ↑ chat-item__all-text-container вылезает за границы chat-item без костыля*/}
             <div className="chat-item__title-and-date-container">
                 <span className="chat-item__title">{props.chatPreview.title}</span>
                 <span className="chat-item__date">

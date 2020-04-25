@@ -24,7 +24,7 @@
 }
 
 .chat-item__all-text-container {
-    width: 1px; /* todo хз что делать с этим костылём*/
+    width: 1px; /* todo убрать этот костыль*/
     flex-direction: column;
     justify-content: space-between;
 }
