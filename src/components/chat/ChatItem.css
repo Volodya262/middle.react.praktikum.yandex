@@ -1,28 +1,42 @@
-
 .chat-item {
     display: flex;
     flex-direction: row;
-    max-width: 100px;
+    margin: 8px;
+    background: #e2e2e2;
 }
 
 .chat-item__logo {
     height: 50px;
 }
 
-.chat-item__all-text-container {
+.chat-item__all-text-container,
+.chat-item__title-and-date-container,
+.chat-item__author-and-message-container {
     display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.chat-item__message {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.chat-item__all-text-container {
+    width: 1px; /* todo хз что делать с этим костылём*/
     flex-direction: column;
     justify-content: space-between;
 }
 
 .chat-item__title-and-date-container {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 8px;
 }
 
 .chat-item__author-and-message-container {
-    display: flex;
+    padding: 0 8px;
 }
 
 .chat-item__title {
@@ -38,25 +52,4 @@
     font-weight: bold;
     flex-shrink: 0;
     color: rgb(50, 115, 220);
-}
-
-.chat-item__message {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .chat-item__logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }

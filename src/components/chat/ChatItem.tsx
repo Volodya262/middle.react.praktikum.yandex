@@ -1,29 +1,28 @@
 import * as React from 'react';
 import {format} from 'date-fns';
 import './ChatItem.css'
+import {IChatPreview} from "../../model/i-chat-preview";
 
 interface IProps {
-    iconUrl: string;
-    title: string;
-    author: string;
-    message: string;
-    date: Date;
+    chatPreview: IChatPreview
 }
 
-const Message: React.FunctionComponent<IProps> = (props: IProps) => (
+const ChatItem: React.FunctionComponent<IProps> = (props: IProps) => (
     <div className="chat-item">
-        <img src={props.iconUrl} className="chat-item__logo" alt="logo"/>
+        <img src={props.chatPreview.logoUrl} className="chat-item__logo" alt="logo"/>
         <div className="chat-item__all-text-container">
             <div className="chat-item__title-and-date-container">
-                <span className="chat-item__title">{props.title}</span>
-                <span className="chat-item__date">{format(props.date, 'dd/mm/yyyy')}</span>
+                <span className="chat-item__title">{props.chatPreview.title}</span>
+                <span className="chat-item__date">
+                    {format(props.chatPreview.date, 'dd/MM/yyyy')}
+                </span>
             </div>
             <div className="chat-item__author-and-message-container">
-                <span className="chat-item__author">{props.author}:</span>
-                <span className="chat-item__message">{props.message}</span>
+                <span className="chat-item__author">{props.chatPreview.author}:</span>
+                <span className="chat-item__message">{props.chatPreview.message}</span>
             </div>
         </div>
     </div>
 );
 
-export default Message;
+export default ChatItem;
