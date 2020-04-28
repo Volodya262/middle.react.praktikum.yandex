@@ -1,12 +1,16 @@
 .chat-item {
     display: flex;
-    flex-direction: row;
-    margin: 8px;
-    background: #e2e2e2;
+    padding: 8px;
+}
+
+.chat-item__selected {
+    background-color: #9db3b4;
+    transition: background-color 100ms;
 }
 
 .chat-item__logo {
     height: 50px;
+    border-radius: 50%;
 }
 
 .chat-item__all-text-container,
@@ -24,8 +28,8 @@
 }
 
 .chat-item__all-text-container {
-    width: 1px; /* todo убрать этот костыль*/
     flex-direction: column;
+    max-width: calc(100% - 50px - 8px); /* width аватарки + margin. Это костыль? */
     justify-content: space-between;
 }
 
@@ -51,5 +55,5 @@
 .chat-item__author {
     font-weight: bold;
     flex-shrink: 0;
-    color: rgb(50, 115, 220);
+    color: #344b52;
 }

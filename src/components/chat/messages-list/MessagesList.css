@@ -1,0 +1,20 @@
+.messages-list-container {
+    display: flex;
+    flex-direction: column;
+    flex: 5 1 500px;
+    min-width: 300px;
+    max-width: 100vw;
+    overflow: auto;
+    background-color: #587983;
+}
+
+.date {
+    width: min-content;
+    background-color: white;
+    margin: auto;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 1.5em;
+    margin-block-start: 0.67em;
+    box-shadow: 5px 5px 5px -2px rgba(0, 0, 0, 0.2);
+}

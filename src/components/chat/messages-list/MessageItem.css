@@ -1,0 +1,58 @@
+.message-item {
+    display: flex;
+    margin: 8px;
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 5px 5px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.message-item__selected {
+    background-color: #e2e2e2;
+    transition: background-color 100ms;
+}
+
+.message-item__avatar {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.message-item__all-text-container,
+.message-item__author-and-date-container,
+.message-item__author-and-message-container {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.message-item__message {
+    text-align: start;
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+}
+
+.message-item__all-text-container {
+    flex-direction: column;
+    max-width: calc(100% - 50px - 8px); /* width аватарки + margin. все еще костыль? */
+    justify-content: space-between;
+}
+
+.message-item__author-and-date-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+
+.message-item__author-and-message-container {
+    padding: 0 8px;
+}
+
+.message-item__author {
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.message-item__date {
+    /*пока пустое*/
+}
