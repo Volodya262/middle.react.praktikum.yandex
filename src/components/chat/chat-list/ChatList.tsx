@@ -9,10 +9,10 @@ interface IProps {
     onChatSelected: (id: number) => void;
 }
 
-const ChatList: React.FunctionComponent<IProps> = (props: IProps) => {
-    const sortedChatsWithSelectedInfo = props.chatPreviews
+const ChatList: React.FunctionComponent<IProps> = ({chatPreviews, onChatSelected, selectedChatId}) => {
+    const sortedChatsWithSelectedInfo = chatPreviews
         .sort((a, b) => b.date.getTime() - a.date.getTime())
-        .map(chat => ({chatPreview: chat, isSelected: chat.id === props.selectedChatId}));
+        .map(chat => ({chatPreview: chat, isSelected: chat.id === selectedChatId}));
 
     return (
         <div className="chat-list-container">
@@ -20,7 +20,7 @@ const ChatList: React.FunctionComponent<IProps> = (props: IProps) => {
                 <ChatItem key={chatInfo.chatPreview.id}
                           chatPreview={chatInfo.chatPreview}
                           isSelected={chatInfo.isSelected}
-                          onChatSelected={props.onChatSelected}/>
+                          onChatSelected={onChatSelected}/>
             ))}
         </div>
     );

@@ -8,10 +8,10 @@ interface IProps {
     messages: IMessage[]
 }
 
-const MessagesGroup: React.FunctionComponent<IProps> = (props: IProps) => (
+const MessagesGroup: React.FunctionComponent<IProps> = ({date, messages}) => (
     <div>
-        <div className="date">{format(props.date, 'dd.MM.yyyy')}</div>
-        {props.messages.map(msg => (<MessageItem {...msg}/>))}
+        <div className="date">{format(date, 'dd.MM.yyyy')}</div>
+        {messages.map(msg => (<MessageItem {...msg}/>))}
     </div>
 );
 

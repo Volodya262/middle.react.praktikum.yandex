@@ -9,8 +9,8 @@ interface IProps {
     onChatSelected?: (id: number) => void;
 }
 
-const ChatItem: React.FunctionComponent<IProps> = (props: IProps) => {
-    const onChatSelected = () => {
+const ChatItem: React.FunctionComponent<IProps> = (props) => {
+    const onChatSelectedHandler = () => {
         if (props.onChatSelected != null) {
             props.onChatSelected(props.chatPreview.id);
         }
@@ -21,7 +21,7 @@ const ChatItem: React.FunctionComponent<IProps> = (props: IProps) => {
     const formattedDate = format(props.chatPreview.date, 'dd.MM.yyyy');
 
     return (
-        <div className={chatItemClassName} onClick={onChatSelected}>
+        <div className={chatItemClassName} onClick={onChatSelectedHandler}>
             <img src={props.chatPreview.logoUrl} className="chat-item__logo" alt="logo"/>
             <div className="chat-item__all-text-container">
                 {/* ↑ chat-item__all-text-container вылезает за границы chat-item без костыля*/}
