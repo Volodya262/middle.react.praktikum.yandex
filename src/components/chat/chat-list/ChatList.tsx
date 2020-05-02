@@ -1,15 +1,15 @@
 import React from 'react';
 import {IChatPreview} from "../../../model/i-chat-preview";
-import ChatItem from "../chat-item/ChatItem";
 import "./ChatList.css"
+import {ChatItem} from "../chat-item/ChatItem";
 
 interface IProps {
     chatPreviews: IChatPreview[],
-    selectedChatId?: number
+    selectedChatId?: number | null
     onChatSelected: (id: number) => void;
 }
 
-const ChatList: React.FunctionComponent<IProps> = ({chatPreviews, onChatSelected, selectedChatId}) => {
+export const ChatList: React.FunctionComponent<IProps> = ({chatPreviews, onChatSelected, selectedChatId}) => {
     const sortedChatsWithSelectedInfo = chatPreviews
         .sort((a, b) => b.date.getTime() - a.date.getTime())
         .map(chat => ({chatPreview: chat, isSelected: chat.id === selectedChatId}));
@@ -25,5 +25,3 @@ const ChatList: React.FunctionComponent<IProps> = ({chatPreviews, onChatSelected
         </div>
     );
 };
-
-export default ChatList;

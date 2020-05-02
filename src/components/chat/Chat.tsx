@@ -1,41 +1,35 @@
 import React from 'react';
 import {IChatPreview} from "../../model/i-chat-preview";
-import ChatList from "./chat-list/ChatList";
 import {IMessage} from "../../model/i-message";
-import MessageList from "./messages-list/MessagesList";
 import './Chat.css'
 import {chatMessages, chats} from "../../stub-data";
-
-function getChatMessages(chatId: number): IMessage[] { // как будто сходили на бэк лел
-    const res = chatMessages.find(msgs => msgs.chatId === chatId);
-    return res != null ? res.messages : [];
-}
-
-interface IProps {
-
-}
+import {ChatList} from "./chat-list/ChatList";
+import {MessageList} from "./messages-list/MessagesList";
 
 interface IState {
     chats: IChatPreview[],
-    selectedChatId?: number; // if null then no chat is selected
+    selectedChatId?: number | null; // if null then no chat is selected
     selectedChatMessages?: IMessage[]; // if null then no chat is selected
 }
 
-class Chat extends React.Component<IProps, IState> {
-    constructor(props: IProps) {
-        super(props);
-        this.state = {
-            chats: chats
-        }
+export class Chat extends React.Component {
+    state: IState = {
+        chats: chats,
+        selectedChatMessages: [],
+        selectedChatId: null
+    }
+
+    getChatMessages(chatId: number): IMessage[] { // как будто сходили на бэк лел
+        const res = chatMessages.find(msgs => msgs.chatId === chatId);
+        return res != null ? res.messages : [];
     }
 
     onChatSelected = (id: number) => {
-        const messages = getChatMessages(id);
-        const newState = {...this.state, selectedChatId: id, selectedChatMessages: messages}
-        this.setState(newState);
+        const messages = this.getChatMessages(id);
+        this.setState({...this.state, selectedChatId: id, selectedChatMessages: messages});
     };
 
-    render(): React.ReactNode {
+    render() {
         return (
             <div className="chat-window">
                 <ChatList chatPreviews={this.state.chats}
@@ -46,5 +40,3 @@ class Chat extends React.Component<IProps, IState> {
         )
     }
 }
-
-export default Chat;

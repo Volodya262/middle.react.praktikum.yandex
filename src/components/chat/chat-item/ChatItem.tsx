@@ -9,7 +9,7 @@ interface IProps {
     onChatSelected?: (id: number) => void;
 }
 
-const ChatItem: React.FunctionComponent<IProps> = (props) => {
+export const ChatItem: React.FunctionComponent<IProps> = (props) => {
     const onChatSelectedHandler = () => {
         if (props.onChatSelected != null) {
             props.onChatSelected(props.chatPreview.id);
@@ -37,5 +37,3 @@ const ChatItem: React.FunctionComponent<IProps> = (props) => {
         </div>
     );
 };
-
-export default ChatItem;

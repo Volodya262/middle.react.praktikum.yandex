@@ -3,7 +3,7 @@ import './MessageItem.css'
 import {format} from "date-fns";
 import {IMessage} from "../../../model/i-message";
 
-const MessageItem: React.FunctionComponent<IMessage> = ({author, avatarUrl, date, message}) => {
+export const MessageItem: React.FunctionComponent<IMessage> = ({author, avatarUrl, date, message}) => {
 
     const formattedTime = format(date, 'HH:mm'); // HH - 24h format
 
@@ -22,5 +22,3 @@ const MessageItem: React.FunctionComponent<IMessage> = ({author, avatarUrl, date
         </div>
     );
 }
-
-export default MessageItem;
