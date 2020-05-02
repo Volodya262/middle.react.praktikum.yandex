@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react'
 import {IMessage} from "../../../model/i-message";
 import './MessagesList.css'
 import _ from "lodash";
 import {startOfDay} from "date-fns";
-import MessagesGroup from "./MessagesGroup";
+import MessagesGroup from "../messages-group/MessagesGroup";
 
 interface IProps {
     messages?: IMessage[];

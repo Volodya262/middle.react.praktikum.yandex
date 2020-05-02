@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from 'react';
 import {IChatPreview} from "../../model/i-chat-preview";
 import ChatList from "./chat-list/ChatList";
 import {IChatMessages} from "../../model/i-chat-messages";

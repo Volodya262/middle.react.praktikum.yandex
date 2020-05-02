@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {format} from 'date-fns';
 import './ChatItem.css'
 import {IChatPreview} from "../../../model/i-chat-preview";

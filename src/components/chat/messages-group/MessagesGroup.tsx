@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react'
 import {IMessage} from "../../../model/i-message";
 import {format} from "date-fns";
-import MessageItem from "./MessageItem";
+import MessageItem from "../message-item/MessageItem";
 
 interface IProps {
     date: Date;

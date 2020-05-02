@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from 'react';
 import {IChatPreview} from "../../../model/i-chat-preview";
-import ChatItem from "./ChatItem";
+import ChatItem from "../chat-item/ChatItem";
 import "./ChatList.css"
 
 interface IProps {
