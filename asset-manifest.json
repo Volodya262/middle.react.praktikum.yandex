@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/middle.react.praktikum.yandex/static/css/main.55859940.chunk.css",
-    "main.js": "/middle.react.praktikum.yandex/static/js/main.59486dff.chunk.js",
-    "main.js.map": "/middle.react.praktikum.yandex/static/js/main.59486dff.chunk.js.map",
+    "main.css": "/middle.react.praktikum.yandex/static/css/main.b9ef5cd4.chunk.css",
+    "main.js": "/middle.react.praktikum.yandex/static/js/main.97694bdb.chunk.js",
+    "main.js.map": "/middle.react.praktikum.yandex/static/js/main.97694bdb.chunk.js.map",
     "runtime-main.js": "/middle.react.praktikum.yandex/static/js/runtime-main.c0119f50.js",
     "runtime-main.js.map": "/middle.react.praktikum.yandex/static/js/runtime-main.c0119f50.js.map",
-    "static/js/2.19cd454e.chunk.js": "/middle.react.praktikum.yandex/static/js/2.19cd454e.chunk.js",
-    "static/js/2.19cd454e.chunk.js.map": "/middle.react.praktikum.yandex/static/js/2.19cd454e.chunk.js.map",
+    "static/js/2.f046c9d3.chunk.js": "/middle.react.praktikum.yandex/static/js/2.f046c9d3.chunk.js",
+    "static/js/2.f046c9d3.chunk.js.map": "/middle.react.praktikum.yandex/static/js/2.f046c9d3.chunk.js.map",
     "index.html": "/middle.react.praktikum.yandex/index.html",
-    "precache-manifest.7aa67a079b8243c8f8b0ce9c12560bf2.js": "/middle.react.praktikum.yandex/precache-manifest.7aa67a079b8243c8f8b0ce9c12560bf2.js",
+    "precache-manifest.2c93e13915d8fe9cdd47187644cc201a.js": "/middle.react.praktikum.yandex/precache-manifest.2c93e13915d8fe9cdd47187644cc201a.js",
     "service-worker.js": "/middle.react.praktikum.yandex/service-worker.js",
-    "static/css/main.55859940.chunk.css.map": "/middle.react.praktikum.yandex/static/css/main.55859940.chunk.css.map",
-    "static/js/2.19cd454e.chunk.js.LICENSE.txt": "/middle.react.praktikum.yandex/static/js/2.19cd454e.chunk.js.LICENSE.txt"
+    "static/css/main.b9ef5cd4.chunk.css.map": "/middle.react.praktikum.yandex/static/css/main.b9ef5cd4.chunk.css.map",
+    "static/js/2.f046c9d3.chunk.js.LICENSE.txt": "/middle.react.praktikum.yandex/static/js/2.f046c9d3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c0119f50.js",
-    "static/js/2.19cd454e.chunk.js",
-    "static/css/main.55859940.chunk.css",
-    "static/js/main.59486dff.chunk.js"
+    "static/js/2.f046c9d3.chunk.js",
+    "static/css/main.b9ef5cd4.chunk.css",
+    "static/js/main.97694bdb.chunk.js"
   ]
 }
