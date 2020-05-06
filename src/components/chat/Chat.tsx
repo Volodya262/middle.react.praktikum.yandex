@@ -26,7 +26,7 @@ export class Chat extends React.Component {
 
     onChatSelected = (id: number) => {
         const messages = this.getChatMessages(id);
-        this.setState({...this.state, selectedChatId: id, selectedChatMessages: messages});
+        this.setState({selectedChatId: id, selectedChatMessages: messages});
     };
 
     render() {

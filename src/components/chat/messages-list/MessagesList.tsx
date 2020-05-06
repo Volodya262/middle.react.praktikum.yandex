@@ -12,13 +12,13 @@ interface IProps {
 
 export const MessageList: React.FunctionComponent<IProps> = ({messages}) => {
 
-    const grouppedMessagesArray = groupByAsArray(messages || [], msg => startOfDay(msg.date).getTime());
-    const grouppedMessages = sortBy(grouppedMessagesArray, group => group.key, (a, b) => a - b)
+    const groupedMessagesArray = groupByAsArray(messages || [], msg => startOfDay(msg.date).getTime());
+    const groupedSortedMessages = sortBy(groupedMessagesArray, group => group.key, (a, b) => a - b)
         .map(group => ({date: new Date(group.key), messages: group.items}));
 
     return (
         <div className="messages-list-container">
-            {grouppedMessages.map(group => (
+            {groupedSortedMessages.map(group => (
                 <MessagesGroup key={group.date.getTime()} date={group.date} messages={group.messages}/>))}
         </div>)
 }
