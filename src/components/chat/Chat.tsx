@@ -8,8 +8,8 @@ import {MessageList} from "./messages-list/MessagesList";
 
 interface IState {
     chats: IChatPreview[],
-    selectedChatId?: number | null; // if null then no chat is selected
-    selectedChatMessages?: IMessage[]; // if null then no chat is selected
+    selectedChatId: number | null; // if null then no chat is selected
+    selectedChatMessages: IMessage[]; // if null then no chat is selected
 }
 
 export class Chat extends React.Component {
