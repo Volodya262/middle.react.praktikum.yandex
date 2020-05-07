@@ -1,7 +1,7 @@
 import React from 'react'
 import './MessageItem.css'
 import {format} from "date-fns";
-import {IMessage} from "../../../types/i-message";
+import {IMessage} from "../../types/i-message";
 
 export const MessageItem: React.FunctionComponent<IMessage> = ({author, avatarUrl, date, message}) => {
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import {IMessage} from "../../../types/i-message";
+import {IMessage} from "../../types/i-message";
 import './MessagesList.css'
 import {startOfDay} from "date-fns";
-import {groupByAsArray} from "../../../utils/group-by-as-array";
-import {sortBy} from "../../../utils/sort-by";
+import {groupByAsArray} from "../../../common/utils/group-by-as-array";
+import {sortBy} from "../../../common/utils/sort-by";
 import {MessagesGroup} from "../messages-group/MessagesGroup";
 
 interface IProps {

@@ -1,6 +1,6 @@
 import React from 'react';
-import {IChatPreview} from "../../types/i-chat-preview";
-import {IMessage} from "../../types/i-message";
+import {IChatPreview} from "../types/i-chat-preview";
+import {IMessage} from "../types/i-message";
 import './Chat.css'
 import {chatMessages, chats} from "../../stub-data";
 import {ChatList} from "./chat-list/ChatList";

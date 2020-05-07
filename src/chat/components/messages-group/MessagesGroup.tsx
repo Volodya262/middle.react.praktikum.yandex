@@ -1,5 +1,5 @@
 import React from 'react'
-import {IMessage} from "../../../types/i-message";
+import {IMessage} from "../../types/i-message";
 import {format} from "date-fns";
 import {MessageItem} from "../message-item/MessageItem";
 

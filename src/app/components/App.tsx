@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import {Chat} from "../chat/Chat";
+import {Chat} from "../../chat/components/Chat";
 import {Route, Switch} from 'react-router-dom';
 
-export const App: React.FunctionComponent = () =>
-    (
+export const App: React.FunctionComponent = () => {
+    return (
         <div className="App">
             <Switch>
                 <Route exact path={'/chat'} component={Chat}/>
@@ -16,3 +16,4 @@ export const App: React.FunctionComponent = () =>
             </Switch>
         </div>
     );
+};
