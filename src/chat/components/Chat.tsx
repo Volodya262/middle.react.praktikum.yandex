@@ -8,27 +8,30 @@ import {MessageList} from "./messages-list/MessagesList";
 
 interface IState {
     chats: IChatPreview[],
-    selectedChatId: number | null; // if null then no chat is selected
-    selectedChatMessages: IMessage[]; // if null then no chat is selected
+    selectedChatId: number | null; // if null or undefined then no chat is selected
+    selectedChatMessages: IMessage[]; // if null or undefined then no chat is selected
+    isLoading: boolean;
 }
 
 interface IProps {
-    selectedChatId?: number
+    /**
+     * Выбранный "снаружи" chatId. Если null, то не выбрано
+     */
+    id: number | null
+
+    /**
+     * Выкидывание наружу выбранного chatId
+     * @param id
+     */
+    idChangeHandler: (id: number) => void;
 }
 
 export class Chat extends React.Component<IProps, IState> {
     state: IState = {
         chats: chats,
         selectedChatMessages: [],
-        selectedChatId: null
-    }
-
-    constructor(props: IProps) {
-        super(props);
-        console.log(props)
-        if (props.selectedChatId != null) {
-
-        }
+        selectedChatId: null,
+        isLoading: false
     }
 
     getChatMessages(chatId: number): IMessage[] { // как будто сходили на бэк лел
@@ -36,10 +39,43 @@ export class Chat extends React.Component<IProps, IState> {
         return res != null ? res.messages : [];
     }
 
+    getChatMessagesPromise(chatId: number): Promise<IMessage[]> {
+        return new Promise<IMessage[]>((resolve) => {
+            setTimeout(() => resolve(this.getChatMessages(chatId)), 1000);
+        })
+    }
+
     onChatSelected = (id: number) => {
-        const messages = this.getChatMessages(id);
-        this.setState({selectedChatId: id, selectedChatMessages: messages});
+        this.tryInvokeIdChangeHandler(id);
+        this.setState({selectedChatId: id})
+        this.loadChatMessages(id);
     };
+
+    loadChatMessages = (id: number) => {
+        this.setState({isLoading: true});
+
+        this.getChatMessagesPromise(id).then(
+            res => this.setState({selectedChatMessages: res, isLoading: false})
+        )
+    }
+
+    tryInvokeIdChangeHandler(id: number): void {
+        if (this.props.idChangeHandler != null) {
+            this.props.idChangeHandler(id);
+        }
+    }
+
+    componentDidMount(): void {
+        if (this.props.id != null) {
+            this.loadChatMessages(this.props.id)
+        }
+    }
+
+    componentDidUpdate(prevProps: Readonly<IProps>): void {
+        if (this.props.id != null && prevProps.id !== this.props.id) {
+            this.loadChatMessages(this.props.id)
+        }
+    }
 
     render() {
         return (
@@ -47,7 +83,7 @@ export class Chat extends React.Component<IProps, IState> {
                 <ChatList chatPreviews={this.state.chats}
                           selectedChatId={this.state.selectedChatId}
                           onChatSelected={this.onChatSelected}/>
-                <MessageList messages={this.state.selectedChatMessages}/>
+                {this.state.isLoading ? 'ЗАГРУЗКА' : <MessageList messages={this.state.selectedChatMessages}/>}
             </div>
         )
     }
