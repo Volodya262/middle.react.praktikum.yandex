@@ -1,5 +1,5 @@
 import React from 'react'
-import {IMessage} from "../../../model/i-message";
+import {IMessage} from "../../../types/i-message";
 import './MessagesList.css'
 import {startOfDay} from "date-fns";
 import {groupByAsArray} from "../../../utils/group-by-as-array";

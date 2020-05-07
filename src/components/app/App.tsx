@@ -3,17 +3,16 @@ import './App.css';
 import {Chat} from "../chat/Chat";
 import {Route, Switch} from 'react-router-dom';
 
-export const App: React.FunctionComponent = () => {
-    return (
+export const App: React.FunctionComponent = () =>
+    (
         <div className="App">
             <Switch>
-                <Route path={'/chat'}>
-                    <Chat/>
-                </Route>
+                <Route exact path={'/chat'} component={Chat}/>
+                <Route exact path={'/chat/:id'} render={(props) => (<Chat selectedChatId={props.match.params.id}/>)}/>
+                {/*Вынести в HOC "доставание" и прописывание id чата в url*/}
                 <Route>
                     not found
                 </Route>
             </Switch>
         </div>
     );
-}

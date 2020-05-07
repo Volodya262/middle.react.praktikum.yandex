@@ -1,5 +1,5 @@
-import {IChatPreview} from "./model/i-chat-preview";
-import {IChatMessages} from "./model/i-chat-messages";
+import {IChatPreview} from "./types/i-chat-preview";
+import {IChatMessages} from "./types/i-chat-messages";
 
 const ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
 

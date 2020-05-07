@@ -1,6 +1,6 @@
 import React from 'react';
-import {IChatPreview} from "../../model/i-chat-preview";
-import {IMessage} from "../../model/i-message";
+import {IChatPreview} from "../../types/i-chat-preview";
+import {IMessage} from "../../types/i-message";
 import './Chat.css'
 import {chatMessages, chats} from "../../stub-data";
 import {ChatList} from "./chat-list/ChatList";
@@ -12,11 +12,23 @@ interface IState {
     selectedChatMessages: IMessage[]; // if null then no chat is selected
 }
 
-export class Chat extends React.Component {
+interface IProps {
+    selectedChatId?: number
+}
+
+export class Chat extends React.Component<IProps, IState> {
     state: IState = {
         chats: chats,
         selectedChatMessages: [],
         selectedChatId: null
+    }
+
+    constructor(props: IProps) {
+        super(props);
+        console.log(props)
+        if (props.selectedChatId != null) {
+
+        }
     }
 
     getChatMessages(chatId: number): IMessage[] { // как будто сходили на бэк лел

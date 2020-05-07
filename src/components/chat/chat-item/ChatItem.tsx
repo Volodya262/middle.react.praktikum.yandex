@@ -1,7 +1,7 @@
 import React from 'react';
 import {format} from 'date-fns';
 import './ChatItem.css'
-import {IChatPreview} from "../../../model/i-chat-preview";
+import {IChatPreview} from "../../../types/i-chat-preview";
 
 interface IProps {
     chatPreview: IChatPreview,

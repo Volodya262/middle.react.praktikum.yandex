@@ -1,5 +1,5 @@
 import React from 'react';
-import {IChatPreview} from "../../../model/i-chat-preview";
+import {IChatPreview} from "../../../types/i-chat-preview";
 import "./ChatList.css"
 import {ChatItem} from "../chat-item/ChatItem";
 
