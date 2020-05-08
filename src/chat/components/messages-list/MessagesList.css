@@ -1,13 +1,3 @@
-.messages-list-container {
-    display: flex;
-    flex-direction: column;
-    flex: 5 1 500px;
-    min-width: 300px;
-    max-width: 100vw;
-    overflow: auto;
-    background-color: #587983;
-}
-
 .date {
     width: min-content;
     background-color: white;

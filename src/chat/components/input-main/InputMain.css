@@ -1,0 +1,21 @@
+.input-main-container {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    background-color: white;
+}
+
+.input-main__input {
+    padding: 8px;
+    border-radius: 8px;
+    flex: 1 0 500px;
+    outline-style: none;
+    box-shadow: none;
+    margin-right: 8px;
+}
+
+.input-main__send-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

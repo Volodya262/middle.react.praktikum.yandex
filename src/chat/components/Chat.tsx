@@ -5,6 +5,7 @@ import './Chat.css'
 import {chatMessages, chats} from "../../stub-data";
 import {ChatList} from "./chat-list/ChatList";
 import {MessagesList} from "./messages-list/MessagesList";
+import {InputMain} from "./input-main/InputMain";
 
 interface IState {
     chats: IChatPreview[],
@@ -41,13 +42,15 @@ export class Chat extends React.Component<IProps, IState> {
 
     getChatMessagesPromise(chatId: number): Promise<ISingleMessage[]> {
         return new Promise<ISingleMessage[]>((resolve) => {
-            setTimeout(() => resolve(this.getChatMessages(chatId)), 1000);
+            setTimeout(() => resolve(this.getChatMessages(chatId)), 100);
         })
     }
 
+    // вызывается только когда чат выбран юзером, а не пропихнулся "сверху"
     onChatSelected = (id: number) => {
         this.tryInvokeIdChangeHandler(id);
-        this.setState({selectedChatId: id}) // надо ли здесь использовать функцию для setState и класть loadChatMessages в коллбэк? 
+        // я ведь правильно понимаю что функциональный setState надо использовать только когда новое состояние зависит от props?
+        this.setState({selectedChatId: id})
         this.loadChatMessages(id);
     };
 
@@ -67,24 +70,33 @@ export class Chat extends React.Component<IProps, IState> {
 
     componentDidMount(): void {
         if (this.props.id != null) {
+            this.setState((state, props) => ({selectedChatId: props.id}))
             this.loadChatMessages(this.props.id)
         }
     }
 
     componentDidUpdate(prevProps: Readonly<IProps>): void {
         if (this.props.id != null && prevProps.id !== this.props.id) {
+            this.setState((state, props) => ({selectedChatId: props.id}))
             this.loadChatMessages(this.props.id)
         }
     }
 
     render() {
-        return (
-            <div className="chat-window">
-                <ChatList chatPreviews={this.state.chats}
-                          selectedChatId={this.state.selectedChatId}
-                          onChatSelected={this.onChatSelected}/>
-                {this.state.isLoading ? 'ЗАГРУЗКА' : <MessagesList messages={this.state.selectedChatMessages}/>}
+        return <div className="chat-window">
+            <ChatList chatPreviews={this.state.chats}
+                      selectedChatId={this.state.selectedChatId}
+                      onChatSelected={this.onChatSelected}/>
+            <div className="messages-list-and-input-container">
+
+                <div className="messages-list-container-wrapper">
+                    {this.state.isLoading
+                        ? 'ЗАГРУЗКА'
+                        : <MessagesList messages={this.state.selectedChatMessages}/>
+                    }
+                </div>
+                <InputMain/>
             </div>
-        )
+        </div>
     }
 }

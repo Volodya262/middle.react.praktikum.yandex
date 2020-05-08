@@ -1,6 +1,7 @@
 import React from 'react';
 import {IChatPreview} from "../../types/i-chat-preview";
 import "./ChatList.css"
+import '../Chat.css'
 import {ChatItem} from "../chat-item/ChatItem";
 
 interface IProps {

@@ -1,6 +1,7 @@
 import React from 'react'
 import {ISingleMessage} from "../../types/i-single-message";
 import './MessagesList.css'
+import '../Chat.css'
 import {startOfDay} from "date-fns";
 import {groupByAsArray} from "../../../common/utils/group-by-as-array";
 import {sortBy} from "../../../common/utils/sort-by";
