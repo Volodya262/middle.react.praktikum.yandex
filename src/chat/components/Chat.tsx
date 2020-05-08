@@ -2,10 +2,10 @@ import React from 'react';
 import {IChatPreview} from "../types/i-chat-preview";
 import {ISingleMessage} from "../types/i-single-message";
 import './Chat.css'
-import {chatMessages, chats} from "../../stub-data";
 import {ChatList} from "./chat-list/ChatList";
 import {MessagesList} from "./messages-list/MessagesList";
 import {InputMain} from "./input-main/InputMain";
+import {ChatApiStub, IChatApi} from '../api/MessagesApiStub';
 
 interface IState {
     chats: IChatPreview[],
@@ -28,36 +28,42 @@ interface IProps {
 }
 
 export class Chat extends React.Component<IProps, IState> {
-    state: IState = {
-        chats: chats,
-        selectedChatMessages: [],
-        selectedChatId: null,
-        isLoading: false
-    }
 
-    getChatMessages(chatId: number): ISingleMessage[] { // как будто сходили на бэк лел
-        const res = chatMessages.find(msgs => msgs.chatId === chatId);
-        return res != null ? res.messages : [];
-    }
+    chatApi: IChatApi;
 
-    getChatMessagesPromise(chatId: number): Promise<ISingleMessage[]> {
-        return new Promise<ISingleMessage[]>((resolve) => {
-            setTimeout(() => resolve(this.getChatMessages(chatId)), 100);
-        })
+    constructor(props: IProps) {
+        super(props);
+        this.state = {
+            chats: [],
+            selectedChatMessages: [],
+            selectedChatId: null,
+            isLoading: false
+        }
+
+        this.chatApi = new ChatApiStub();
+
     }
 
     // вызывается только когда чат выбран юзером, а не пропихнулся "сверху"
     onChatSelected = (id: number) => {
+        if (id === this.state.selectedChatId) {
+            return;
+        }
+
         this.tryInvokeIdChangeHandler(id);
-        // я ведь правильно понимаю что функциональный setState надо использовать только когда новое состояние зависит от props?
         this.setState({selectedChatId: id})
         this.loadChatMessages(id);
     };
 
+    loadChats = () => {
+        return this.chatApi.getChats()
+            .then(res => this.setState({chats: res}))
+    }
+
     loadChatMessages = (id: number) => {
         this.setState({isLoading: true});
 
-        this.getChatMessagesPromise(id).then(
+        this.chatApi.getChatMessages(id).then(
             res => this.setState({selectedChatMessages: res, isLoading: false})
         )
     }
@@ -68,7 +74,24 @@ export class Chat extends React.Component<IProps, IState> {
         }
     }
 
+    sendMessage = (chatId: number, messageText: string) => {
+        this.chatApi.sendMessage(chatId, messageText, 3, 'some user').then(
+            _ => Promise.all([this.chatApi.getChatMessages(chatId), this.chatApi.getChats()])
+        ).then(
+            res => this.setState({selectedChatMessages: res[0], chats: res[1]})
+        )
+    }
+
+    onMessageSentHandler = (messageText: string) => {
+        if (this.state.selectedChatId == null) {
+            return;
+        }
+
+        this.sendMessage(this.state.selectedChatId, messageText);
+    }
+
     componentDidMount(): void {
+        this.loadChats();
         if (this.props.id != null) {
             this.setState((state, props) => ({selectedChatId: props.id}))
             this.loadChatMessages(this.props.id)
@@ -88,14 +111,13 @@ export class Chat extends React.Component<IProps, IState> {
                       selectedChatId={this.state.selectedChatId}
                       onChatSelected={this.onChatSelected}/>
             <div className="messages-list-and-input-container">
-
                 <div className="messages-list-container-wrapper">
                     {this.state.isLoading
                         ? 'ЗАГРУЗКА'
                         : <MessagesList messages={this.state.selectedChatMessages}/>
                     }
                 </div>
-                <InputMain/>
+                <InputMain onMessageSent={this.onMessageSentHandler}/>
             </div>
         </div>
     }
