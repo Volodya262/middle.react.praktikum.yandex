@@ -51,7 +51,7 @@ export const withIdUrlBinding = function <T extends InjectedIdProps>(Component: 
         }
 
         render() {
-            const baseUrl = this.props.match.url;
+            const baseUrl = this.props.match.url; // warning potentially invalid usage of this. Что делать?
             const baseUrlWithId = `${this.props.match.url}/:id`;
 
             return (

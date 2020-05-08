@@ -1,15 +1,15 @@
 import React from 'react';
 import {IChatPreview} from "../types/i-chat-preview";
-import {IMessage} from "../types/i-message";
+import {ISingleMessage} from "../types/i-single-message";
 import './Chat.css'
 import {chatMessages, chats} from "../../stub-data";
 import {ChatList} from "./chat-list/ChatList";
-import {MessageList} from "./messages-list/MessagesList";
+import {MessagesList} from "./messages-list/MessagesList";
 
 interface IState {
     chats: IChatPreview[],
     selectedChatId: number | null; // if null or undefined then no chat is selected
-    selectedChatMessages: IMessage[]; // if null or undefined then no chat is selected
+    selectedChatMessages: ISingleMessage[]; // if null or undefined then no chat is selected
     isLoading: boolean;
 }
 
@@ -34,20 +34,20 @@ export class Chat extends React.Component<IProps, IState> {
         isLoading: false
     }
 
-    getChatMessages(chatId: number): IMessage[] { // как будто сходили на бэк лел
+    getChatMessages(chatId: number): ISingleMessage[] { // как будто сходили на бэк лел
         const res = chatMessages.find(msgs => msgs.chatId === chatId);
         return res != null ? res.messages : [];
     }
 
-    getChatMessagesPromise(chatId: number): Promise<IMessage[]> {
-        return new Promise<IMessage[]>((resolve) => {
+    getChatMessagesPromise(chatId: number): Promise<ISingleMessage[]> {
+        return new Promise<ISingleMessage[]>((resolve) => {
             setTimeout(() => resolve(this.getChatMessages(chatId)), 1000);
         })
     }
 
     onChatSelected = (id: number) => {
         this.tryInvokeIdChangeHandler(id);
-        this.setState({selectedChatId: id})
+        this.setState({selectedChatId: id}) // надо ли здесь использовать функцию для setState и класть loadChatMessages в коллбэк? 
         this.loadChatMessages(id);
     };
 
@@ -83,7 +83,7 @@ export class Chat extends React.Component<IProps, IState> {
                 <ChatList chatPreviews={this.state.chats}
                           selectedChatId={this.state.selectedChatId}
                           onChatSelected={this.onChatSelected}/>
-                {this.state.isLoading ? 'ЗАГРУЗКА' : <MessageList messages={this.state.selectedChatMessages}/>}
+                {this.state.isLoading ? 'ЗАГРУЗКА' : <MessagesList messages={this.state.selectedChatMessages}/>}
             </div>
         )
     }

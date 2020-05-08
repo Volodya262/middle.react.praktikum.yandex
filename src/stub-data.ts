@@ -33,8 +33,8 @@ export const chats: IChatPreview[] = [
         logoUrl: 'https://placekitten.com/200/200',
         author: 'vasya',
         date: new Date(2020, 0, 2),
-        message: ipsum,
-        title: 'чатик с Вовой'
+        message: 'Сообщений для этого чата нет. Приложение не должно крашнутся',
+        title: 'Пустой чатик'
     }
 ]
 
@@ -43,7 +43,8 @@ export const chatMessages: IChatMessages[] = [
         chatId: 1,
         messages: [
             {
-                author: 'Вова',
+                authorName: 'Вова',
+                authorId: 1,
                 date: new Date(2020, 0, 1),
                 message: 'олды тут...',
                 avatarUrl: 'https://placekitten.com/200/200'
@@ -54,31 +55,43 @@ export const chatMessages: IChatMessages[] = [
         chatId: 2,
         messages: [
             {
-                author: 'Вова',
+                authorName: 'Вова',
+                authorId: 1,
                 date: new Date(2020, 0, 1, 12),
                 message: 'Настал следующий день.' + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum,
                 avatarUrl: 'https://placekitten.com/200/200'
             },
             {
-                author: 'Валя',
+                authorName: 'Валя',
+                authorId: 2,
                 date: new Date(2020, 0, 1, 13),
                 message: 'Привет!!!!',
                 avatarUrl: 'https://placekitten.com/250/250'
             },
             {
-                author: 'Валя',
+                authorName: 'Валя',
+                authorId: 2,
                 date: new Date(2020, 0, 1, 14),
-                message: 'Как дела?????',
+                message: 'Как дела?????' + ipsum + ipsum + ipsum + ipsum,
                 avatarUrl: 'https://placekitten.com/250/250'
             },
             {
-                author: 'Валя',
+                authorName: 'Валя',
+                authorId: 2,
                 date: new Date(2020, 0, 1, 16),
                 message: 'ау??????',
                 avatarUrl: 'https://placekitten.com/250/250'
             },
             {
-                author: 'Вова',
+                authorName: 'Вова',
+                authorId: 1,
+                date: new Date(2020, 0, 1, 18),
+                message: 'Это сообщение должно отображаться в отдельном блоке',
+                avatarUrl: 'https://placekitten.com/200/200'
+            },
+            {
+                authorName: 'Вова',
+                authorId: 1,
                 date: new Date(2020, 0, 2, 12),
                 message: 'Настал следующий день.' + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum,
                 avatarUrl: 'https://placekitten.com/200/200'
@@ -89,19 +102,22 @@ export const chatMessages: IChatMessages[] = [
         chatId: 3,
         messages: [
             {
-                author: 'Вова',
+                authorName: 'Вова',
+                authorId: 1,
                 date: new Date(2020, 0, 1),
                 message: 'раз',
                 avatarUrl: 'https://placekitten.com/200/200'
             },
             {
-                author: 'Вова',
+                authorName: 'Вова',
+                authorId: 1,
                 date: new Date(2020, 0, 3),
                 message: 'три',
                 avatarUrl: 'https://placekitten.com/200/200'
             },
             {
-                author: 'Вова',
+                authorName: 'Вова',
+                authorId: 1,
                 date: new Date(2020, 0, 2),
                 message: 'два',
                 avatarUrl: 'https://placekitten.com/200/200'

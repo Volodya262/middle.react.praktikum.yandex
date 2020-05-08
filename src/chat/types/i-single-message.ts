@@ -1,9 +1,10 @@
 /**
  * Сообщение в чате
  */
-export interface IMessage {
+export interface ISingleMessage {
     message: string;
-    author: string;
+    authorName: string;
+    authorId: number;
     avatarUrl: string;
     date: Date;
 }
