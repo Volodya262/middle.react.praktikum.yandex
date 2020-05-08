@@ -6,4 +6,5 @@
 
 .message-user-group__message-text {
     text-align: start;
+    white-space: pre-wrap; /* Фикс для отрисовки новой строки через \n */
 }

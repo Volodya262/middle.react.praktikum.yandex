@@ -9,25 +9,41 @@ interface IProps {
 
 interface IState {
     message: string;
+    expanded: boolean;
 }
 
 export class InputMain extends React.Component<IProps, IState> {
     state: IState = {
-        message: ''
+        message: '',
+        expanded: false
     }
 
-    onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         this.setState({message: event.target.value})
     }
 
-    onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    onInputKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
-            this.sendMessage();
+            if (e.shiftKey) {
+                this.addNewLine();
+            } else {
+                this.sendMessage();
+            }
+            e.preventDefault();
         }
     }
 
     sendMessage = () => {
         this.props.onMessageSent(this.state.message);
+        this.clearInput();
+    }
+
+    addNewLine = () => {
+        this.setState(state => ({message: state.message + '\n', expanded: true}));
+    }
+
+    clearInput = () => {
+        this.setState(state => ({message: '', expanded: false}))
     }
 
     onBtnClick = () => {
@@ -35,13 +51,15 @@ export class InputMain extends React.Component<IProps, IState> {
     }
 
     render(): React.ReactNode {
+        const rows = this.state.expanded ? 5 : 1;
         return (
             <div className="input-main-container">
-                <input type="text" className="input-main__input"
-                       onKeyDown={this.onInputKeyDown}
-                       onChange={this.onInputChange}
-                       value={this.state.message}>
-                </input>
+                <textarea className="input-main__input"
+                          rows={rows}
+                          onKeyDown={this.onInputKeyDown}
+                          onChange={this.onInputChange}
+                          value={this.state.message}>
+                </textarea>
                 <div className="input-main__send-button-container">
                     <button className="input__send-button" onClick={this.onBtnClick}>
                         <FontAwesomeIcon icon={faPaperPlane} size={"lg"}/>

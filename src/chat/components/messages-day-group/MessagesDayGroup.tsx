@@ -11,6 +11,7 @@ interface IProps {
 }
 
 export const MessagesDayGroup: React.FunctionComponent<IProps> = ({date, messages}) => {
+    // если будет время, вынести всю эту стену кода в helper
     const splitPredicate = (currMsg: ISingleMessage, prevMsg: ISingleMessage) => currMsg.authorId !== prevMsg.authorId;
     const userGroupedMessagesArray = splitByPredicate(messages, splitPredicate); // [[msg1, msg2, msg3],[msg4],[msg5]]
     const userMessageGroups: IUserMessagesGroup[] = userGroupedMessagesArray.map(userMsgArray => (
