@@ -1,4 +1,3 @@
-import {IChatPreview} from "../types/i-chat-preview";
 import {IChatMessages} from "../types/i-chat-messages";
 import {IChatCoreInfo} from "../types/i-chat-core-info";
 
@@ -24,41 +23,6 @@ export const chatNames: IChatCoreInfo[] = [
         id: 4,
         title: 'Пустой чатик'
     },
-]
-
-export const chats: IChatPreview[] = [
-    {
-        id: 1,
-        logoUrl: imgUrl1,
-        author: 'Вова',
-        date: new Date(2020, 0, 1),
-        message: 'олды тут...',
-        title: 'чатик с Вовой'
-    },
-    {
-        id: 2,
-        logoUrl: imgUrl1,
-        author: 'Вова',
-        date: new Date(2020, 0, 1, 12),
-        message: 'Настал следующий день.' + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum + ipsum,
-        title: 'чатик с Вовой'
-    },
-    {
-        id: 3,
-        logoUrl: imgUrl1,
-        author: 'Вова',
-        date: new Date(2020, 0, 2),
-        message: 'три',
-        title: 'чатик с Вовой'
-    },
-    {
-        id: 4,
-        logoUrl: imgUrl1,
-        author: 'vasya',
-        date: new Date(2020, 0, 2),
-        message: 'Сообщений для этого чата нет. Приложение не должно крашнутся',
-        title: 'Пустой чатик'
-    }
 ]
 
 export const chatMessages: IChatMessages[] = [
